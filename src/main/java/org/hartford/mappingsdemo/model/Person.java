@@ -1,5 +1,6 @@
 package org.hartford.mappingsdemo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,7 +10,8 @@ public class Person {
     private Long id;
     private String fname;
     private String lname;
-   @OneToOne(mappedBy = "person")
+    @JsonIgnore
+    @OneToOne(mappedBy = "person")
     private Passport passport;
 
     public Passport getPassport() {
