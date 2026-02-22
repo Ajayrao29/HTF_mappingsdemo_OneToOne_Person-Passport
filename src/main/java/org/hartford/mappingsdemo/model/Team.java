@@ -11,7 +11,7 @@ public class Team {
     private String name;
     private String city;
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Player> players;
 
     public Team() {

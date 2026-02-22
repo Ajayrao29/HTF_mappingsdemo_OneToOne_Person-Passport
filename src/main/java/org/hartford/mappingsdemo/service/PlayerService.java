@@ -25,6 +25,11 @@ public class PlayerService {
     }
 
     public Player addPlayer(Player player) {
+        if (player.getTeam() != null && player.getTeam().getId() != null) {
+            Team team = teamRepository.findById(player.getTeam().getId())
+                    .orElseThrow(() -> new RuntimeException("Invalid team id"));
+            player.setTeam(team);
+        }
         return playerRepository.save(player);
     }
 
